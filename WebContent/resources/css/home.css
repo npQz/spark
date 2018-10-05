@@ -1,0 +1,134 @@
+
+.main {
+    background-image: url("../img/_main.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+}
+
+.mainImg-cover {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.contentWrapper {
+    position: relative;
+    display: table;
+    width: 70%;
+    max-width: 1024px;
+    height: 100%;
+    margin: auto;
+}
+
+.contentItem {
+    display: table-cell;
+    vertical-align: middle;
+    margin-top: 60px;
+}
+
+.contentItem-title {
+    color: #fff;
+    font-size: 40px;
+}
+
+.contentItem-info {
+    color: #fff;
+    font-size: 18px;
+    margin-top: 70px;
+    padding-left: 10px;
+}
+
+.contentItem-info-1 {
+    padding-bottom: 15px;
+}
+
+.contentItem-info-2 {
+
+}
+
+.searchBar {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 30px;
+}
+
+.searchBar-items {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.searchBar-content {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ced4da;
+
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+}
+
+.searchBar-icon {
+    background: #fff;
+    color: #bdbdbd;
+    height: 40px;
+    border: 1px solid #ced4da;
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+    padding: 0 5px 0 10px;
+}
+
+.searchBar-comment {
+    color: #f00;
+    padding: 5px 0 0 15px;
+    font-size: 18px;
+}
+
+input[type=text]::placeholder {
+    color: #bdbdbd;
+    padding-left: 10px;
+}
+
+/* for responsive start */
+
+@media screen and (max-width: 768px) {
+
+
+    .contentItem-title {
+        display: block;
+        font-size: 30px;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .contentItem-info {
+        display: block;
+        font-size: 15px;
+        color: #fff;
+        margin-top: 50px;
+    }
+
+}
+
+/* for responsive end */
+
+/* for autocomplete start */
+
+.ui-autocomplete {
+    max-height: 150px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+
+/* for autocomplete end */
+
+
+
+
+
+
+
