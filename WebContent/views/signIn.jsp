@@ -48,12 +48,12 @@
             </div>
             <form action="/MemberLoginAction.Lo" name="signInForm" method="post">
               <div class="input-email">
-                <div><label for="email">이메일</label></div>
+                <div><label for="email">이메일</label><span class="chkValCmt">(영어 또는 숫자로 이루어진 이메일)</span></div>
                 <div><input type="text" name="email" id="email" placeholder="" autofocus></div>
                 <div class="inputCmt" id="emailCmt"></div>
               </div>
               <div class="input-pw">
-                <div><label for="pw">비밀번호</label></div>
+                <div><label for="pw">비밀번호</label><span class="chkValCmt">(4 ~ 12 글자 사이의 영문 또는 숫자)</span></div>
                 <div><input type="password" name="pw" id="pw" placeholder=""></div>
                 <div class="inputCmt" id="pwCmt"></div>
               </div>
@@ -69,7 +69,6 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://stackpath.Lootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="../resources/js/signIn.js"></script>
 
 </body>

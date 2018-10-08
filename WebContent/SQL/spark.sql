@@ -50,14 +50,23 @@ create table SPark(
 
 
 insert into bookmark values(1, 'hjs', '110', '120', sysdate);
+
 select * from bookmark;
+
+select * from spark;
+
 select *from member;
+
+select count(*) from member;
+
 select * from BOOKMARK;
+
 drop table BOOKMARK;
 
 insert into MEMBER values('ddd', 'ddd', 'dd', 'dd');
-insert into MEMBER values('asd', 'ddd', 'dd', 'dd','dd');
 
+insert into MEMBER values('asdf@asdf.com', 'asdf', 'username', '18','none');
 
+commit;
 
 drop table member;

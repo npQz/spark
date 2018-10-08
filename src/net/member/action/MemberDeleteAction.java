@@ -24,13 +24,15 @@ public class MemberDeleteAction implements Action {
 		
 		String  email = (String) session.getAttribute("email");
 		
+		System.out.println(email);
+		
 		if(email == null) {
 			forward.setRedirect(true);
 			forward.setPath("home.Lo");
 			
 			return forward;
 		
-		}else if(email != null) {
+		} /*else if(email != null) {
 			response.setContentType("UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -40,17 +42,23 @@ public class MemberDeleteAction implements Action {
 			out.close();
 			
 			return null;
-		}
+		}*/
 		
-		String deleteEmail = request.getParameter("email");		
-		result=dao.memberDelete(deleteEmail);
+		/*String deleteEmail = request.getParameter("email");*/
+		
+		System.out.println(email);
+		
+		result=dao.memberDelete(email);
 		
 		if(result == false) {
 				System.out.println("회원 삭제 실패");
 				return null;
 		}
+		
+		session.invalidate();
+		
 		forward.setRedirect(true);
-		forward.setPath("home.Lo");
+		forward.setPath("/home.Lo");
 		return forward;
 	}
 

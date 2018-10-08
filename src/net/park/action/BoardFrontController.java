@@ -4,11 +4,12 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// @WebServlet("*.bo")
+ @WebServlet("*.bo")
 public class BoardFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -16,7 +17,7 @@ public class BoardFrontController extends HttpServlet {
 		System.out.println("doGet() 호출...");
 		doProcess(request,response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost() 호출...");
 		doProcess(request,response);
@@ -25,9 +26,9 @@ public class BoardFrontController extends HttpServlet {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//System.out.println("doProcess() 호출...");
 		String uri = request.getRequestURI();
-		//System.out.println(uri);
+		System.out.println(uri);
 		String context = request.getContextPath();
-		//System.out.println(context);
+		System.out.println(context);
 		String command = uri.substring(context.length());
 		System.out.println(command);
 		
@@ -39,10 +40,11 @@ public class BoardFrontController extends HttpServlet {
 		if(command.equals("/BoardSearch.bo")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("./board/board_search.jsp");
+			forward.setPath("/views/board_search.jsp");
 		
 		//디비 연동 페이지 보넸을때
 		}else if(command.equals("/BoardSearchAction.bo")){
+			System.out.println("ddd");
 			action = new BoardSearchAction();
 			try {
 				forward = action.execute(request, response);

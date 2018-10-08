@@ -22,6 +22,8 @@ public class MemberLoginAction implements Action {
 
 		int result = -1;
 		String result2;
+		
+		/*String email = request.getParameter("email");*/
 
 		dto.setEMAIL(request.getParameter("email"));
 		dto.setPASSWORD(request.getParameter("pw"));
@@ -48,12 +50,13 @@ public class MemberLoginAction implements Action {
 			out.close();
 			return null;
 
-		}
 		
+		}
 		String name = dao.memberName(dto.getEMAIL());
 		
 		System.out.println(name);
 		
+		session.setAttribute("email", dto.getEMAIL());
 		session.setAttribute("name", name);
 		
 		forward.setRedirect(true);

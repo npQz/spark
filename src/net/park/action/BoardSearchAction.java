@@ -33,7 +33,7 @@ public class BoardSearchAction implements Action {
 		request.setAttribute("boarddata", boarddata);
 		
 		forward = new ActionForward();
-		forward.setPath("./board/board_view.jsp");
+		forward.setPath("./views/board_view.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

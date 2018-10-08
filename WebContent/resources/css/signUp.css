@@ -105,7 +105,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
 
+.chkValCmt {
+    color: #bdbdbd;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.emailWrapper {
+    display: flex;
+}
+
+#email {
+    width: 100%;
+    border-radius: 3px 0 0 3px;
 }
 
 .inputContents .input-age {
@@ -117,11 +131,11 @@
 }
 
 form > div {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 form > div:nth-child(2) {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .inputContents input:focus {
@@ -131,20 +145,6 @@ form > div:nth-child(2) {
 .input-gender span {
     font-size: 20px;
 }
-
-/*.inputContents input[type=submit] {
-    color: #bdbdbd;
-    font-size: 20px;
-    background: #5C9C7B;
-    border: 0;
-    width: 100%;
-    height: 50px;
-    margin-top: 10px;
-    margin-bottom: 50px;
-    padding: 0;
-    border-radius: 3px;
-    text-align: center;
-}*/
 
 .inputContents input[type=button] {
     color: #bdbdbd;
@@ -166,10 +166,13 @@ form > div:nth-child(2) {
     font-size: 15px;
 }
 
-/*.inputContents input[type=submit]:hover {
-    color: #fff;
-    cursor: pointer;
-}*/
+#emailChk {
+    width: 30%;
+    height: 35px;
+    margin-bottom: 0px;
+    font-size: 15px;
+    border-radius: 0 3px 3px 0;
+}
 
 .inputContents input[type=button]:hover {
     color: #fff;

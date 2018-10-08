@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page trimDirectiveWhitespaces="true" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -12,6 +13,7 @@
   <title>Spark</title>
   
   <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -39,10 +41,10 @@
           </div>
         </div>
         <div class="searchBar">
-          <form action="home.jsp">
+          <form action="./BoardSearch.bo">
             <div class="searchBar-items" id="searchBar-items">
               <button class="searchBar-icon" type="submit" id="search-btn"><i class="material-icons">search</i></button>
-              <input class="searchBar-content" name="" type="text" placeholder="주소 또는 주차장 이름 입력" aria-label="Search" id="tags">
+              <input class="searchBar-content" name="BOARD_NAME" type="text" placeholder="주소 또는 주차장 이름 입력" aria-label="Search" id="tags">
             </div>
             <div class="searchBar-comment">
               <p id="searchVal-comment"></p>
@@ -59,14 +61,13 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://stackpath.Lootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script src="../resources/js/home.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
 
 <script>
 
   /* autocomplete with JQuery */
   $(function () {
-    $.getJSON('../../resources/json/addr.json', function (items) {
+    $.getJSON('${pageContext.request.contextPath}/resources/json/addr.json', function (items) {
       var tags_name = [];
       var tags_addr = [];
       var tags_all = [];

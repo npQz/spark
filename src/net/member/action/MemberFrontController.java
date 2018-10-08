@@ -1,6 +1,7 @@
 package net.member.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.member.action.Action;
 import net.member.action.ActionForward;
+import net.member.db.MemberDAO;
 
 @WebServlet("*.Lo")
 public class MemberFrontController extends HttpServlet {
@@ -58,6 +60,20 @@ public class MemberFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/views/signUp.jsp");
+		
+		} else if (command.equals("/MemberView.Lo")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/views/account.jsp");
+		
+			
+		}else if(command.equals("/MemberViewAction.Lo")){
+		   action = new MemberViewAction();
+		   try{
+			   forward=action.execute(request, response);
+		   }catch(Exception e){
+			   e.printStackTrace();
+		   }
 
 		} else if (command.equals("/MemberLoginAction.Lo")) {
 
@@ -105,7 +121,24 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		} else {
+		} /* ajax test */
+		else if (command.equals("/ajaxTest.Lo")) {
+			
+			String email = request.getParameter("email");
+			
+			PrintWriter out = response.getWriter();
+			
+			MemberDAO dao = new MemberDAO();
+			
+			int cnt = dao.IdChk(email);
+			
+			if (cnt > 0) {
+				out.print("fail");
+			} else {
+				out.print("success");
+			}
+			
+		}else {
 			System.out.println("data flow fail");
 
 		}

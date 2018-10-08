@@ -22,7 +22,7 @@ public class MemberJoinAction implements Action {
 		dto.setPASSWORD(request.getParameter("pw"));
 		dto.setNAME(request.getParameter("name"));
 		dto.setAGE(request.getParameter("age"));
-		dto.setGENDER(request.getParameter("radioBtn"));
+		dto.setGENDER(request.getParameter("gender"));
 		
 		
 		System.out.println(dto.getEMAIL());
