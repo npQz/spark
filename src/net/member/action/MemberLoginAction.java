@@ -50,8 +50,8 @@ public class MemberLoginAction implements Action {
 			out.close();
 			return null;
 
-		
 		}
+
 		String name = dao.memberName(dto.getEMAIL());
 		
 		System.out.println(name);

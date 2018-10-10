@@ -16,13 +16,12 @@
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link href="../resources/bs/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/normalize.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/format/header.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/format/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detail.css">
-  
   
   <style>
   </style>
@@ -46,7 +45,7 @@
           <div class="col-md-12 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
               <div class="text-white-50">상세 보기</span>
-            
+
             </h4>
             <ul class="list-group mb-3">
               <li

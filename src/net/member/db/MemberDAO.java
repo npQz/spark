@@ -153,6 +153,7 @@ public class MemberDAO {
       con = ds.getConnection();
       pstmt = con.prepareStatement(sql);
       pstmt.setString(1, dto.getPASSWORD());
+      pstmt.setString(2, dto.getEMAIL());
       
       pstmt.executeUpdate();
       

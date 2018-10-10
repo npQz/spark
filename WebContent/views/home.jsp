@@ -13,8 +13,6 @@
   <title>Spark</title>
   
   <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

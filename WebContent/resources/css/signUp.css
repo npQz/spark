@@ -160,6 +160,11 @@ form > div:nth-child(2) {
     text-align: center;
 }
 
+.inputContents input[type=button]:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
 .inputCmt {
     padding: 5px 0 0 10px;
     color: #f00;
@@ -169,15 +174,11 @@ form > div:nth-child(2) {
 #emailChk {
     width: 30%;
     height: 35px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     font-size: 15px;
     border-radius: 0 3px 3px 0;
 }
 
-.inputContents input[type=button]:hover {
-    color: #fff;
-    cursor: pointer;
-}
 
 /* input properties end */
 

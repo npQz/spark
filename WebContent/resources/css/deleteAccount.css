@@ -79,8 +79,8 @@
     margin-bottom: 25px;
 }
 
-#inputSubtitle {
-    margin-bottom: 100px;
+#inputSubtitle2 {
+    margin-bottom: 80px;
 }
 
 .inputInfo .inputSubtitle a {
@@ -107,53 +107,9 @@
     align-items: center;
 }
 
-.inputWrapper-1 {
-    display: flex;
-}
-
-.inputWrapper-2 {
-    display: flex;
-}
-
-.input-email {
-    width: 50%;
-}
-
-.input-name {
-    width: 50%;
-}
-
-.input-age {
-    width: 50%;
-}
-
-.input-gender {
-    width: 50%;
-}
-
-.emailWrapper {
-    display: flex;
-}
-
-#email {
-    width: 100%;
-    border-radius: 3px 0 0 3px;
-}
-
-form > div {
-    margin-bottom: 30px;
-}
-
-form > div:nth-child(2) {
-    margin-bottom: 100px;
-}
-
-.inputContents input:focus {
-    border: 1px solid #000;
-}
-
-.inputTitle {
-    padding-bottom: 5px;
+.deleteTitle {
+    padding-bottom: 30px;
+    font-size: 18px;
 }
 
 .textArea {
@@ -167,12 +123,18 @@ form > div:nth-child(2) {
     align-items: center;
 }
 
-.inputContents input[type=button] {
+.inputCmt {
+    padding: 5px 0 0 10px;
+    color: #f00;
+    font-size: 15px;
+}
+
+.inputContents input[type=submit] {
     color: #bdbdbd;
     font-size: 18px;
-    background: #5C9C7B;
+    background: #D32F2F;
     border: 0;
-    width: 40%;
+    width: 100%;
     height: 50px;
     margin-top: 10px;
     margin-bottom: 50px;
@@ -181,23 +143,9 @@ form > div:nth-child(2) {
     text-align: center;
 }
 
-.inputContents input[type=button]:hover {
+.inputContents input[type=submit]:hover {
     color: #fff;
     cursor: pointer;
-}
-
-.inputCmt {
-    padding: 5px 0 0 10px;
-    color: #f00;
-    font-size: 15px;
-}
-
-#emailChk {
-    width: 30%;
-    height: 35px;
-    margin-bottom: 0;
-    font-size: 15px;
-    border-radius: 0 3px 3px 0;
 }
 
 /* input properties end */

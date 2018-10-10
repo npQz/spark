@@ -1,61 +1,79 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: H
-  Date: 2018-10-08
-  Time: 오전 2:55
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set value="${ dto }" var="data"/>
+
 <html>
 <head>
-  <title>delete account</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1"/>
+
+  <title>Spark - Account</title>
+
+  <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/normalize.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/deleteAccount.css">
 
   <style>
-
-    .pwContent {
-      width: 100%;
-    }
-
-    input {
-      width: 100%;
-    }
-    
-    .deleteTitle {
-      margin-top: 50px;
-      margin-bottom: 20px;
-    }
-
-    input[type=submit] {
-      color: #bdbdbd;
-      font-size: 18px;
-      background: #D32F2F;
-      border: 0;
-      width: 100%;
-      height: 40px;
-      border-radius: 3px;
-      text-align: center;
-    }
-
-    input[type=submit]:hover {
-      color: #fff;
-      cursor: pointer;
-    }
 
   </style>
 
 </head>
+
 <body>
 
-  <div class="pwContent">
-    <div class="pwCon-old">
-      <form name="deleteForm" action="/MemberDeleteAction.Lo" method="post">
-        <div class="deleteTitle">정말로 계정을 삭제하시겠습니까?</div>
-        <input type="submit" value="계정 삭제">
-      </form>
-    </div>
-  </div>
+  <main>
+    <div class="panelWrapper">
+      <div class="leftPanel">
+        <div class="leftPanel-cover">
+          <div class="infoWrapper">
+            <div class="infoContents">
+              <div class="info-title">
+                프로필
+              </div>
+              <div class="info-subTitle">
+                당신의 프로필을 확인하고 비밀번호를 변경할 수 있습니다
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="rightPanel">
+        <div class="inputWrapper">
+          <div class="inputContents">
+            <div class="inputInfo">
+              <div class="input-icon"><i class="material-icons">local_parking</i></div>
+              <div class="inputSubtitle" id="inputSubtitle1">
+                주차장을 찾으시나요? <a href="/Home.Lo">홈으로</a>
+              </div>
+              <div class="inputSubtitle" id="inputSubtitle2">
+                회원 정보를 보고 싶으신가요? <a href="javascript:history.go(-1)">회원 정보</a>
+              </div>
+            </div>
+
+            <form action="#" method="post" name="deleteAccForm">
+              <div class="deleteTitle">정말로 계정을 삭제 할까요?</div>
+              <input type="submit" value="계정 삭제" >
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="../resources/js/modifyPW.js"></script>
+
+  <script>
+
+  </script>
 
 </body>
 </html>

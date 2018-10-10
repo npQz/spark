@@ -58,8 +58,7 @@
                 <div><label for="email">이메일</label><span class="chkValCmt">(영어 또는 숫자로 이루어진 이메일)</span></div>
                 <div class="emailWrapper">
                   <input type="text" name="email" id="email" placeholder="" autofocus>
-                  <%--<input onclick="idChk()" type="button" value="중복체크" id="idChk">--%>
-                  <input type="button" id="emailChk" onclick="idChk()"  value="중복 체크">
+                  <input type="button" id="emailChk" value="중복 체크" onclick="idChk()" >
                 </div>
                 <div class="inputCmt" id="emailCmt"></div>
               </div>

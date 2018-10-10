@@ -126,7 +126,7 @@ function idChk() {
   var _email = $('#email').val();
 
   $.ajax({
-    url: "ajaxTest.Lo?email=" + _email,
+    url: "IdChk.Lo?email=" + _email,
     success: function (data) {
       if (data == 'success') {
         alert('사용가능한 이메일입니다.');

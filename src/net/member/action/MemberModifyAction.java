@@ -23,7 +23,8 @@ public class MemberModifyAction implements Action {
 		
 		dto.setPASSWORD(request.getParameter("pw"));
 		
-		result = dao.memberInsert(dto);
+		
+		result = dao.memberModify(dto);
 		
 		if(result == false) {
 			System.out.println("회원정보 수정에 실패하였습니다.");

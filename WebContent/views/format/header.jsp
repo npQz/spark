@@ -26,9 +26,9 @@
             <div class="dropdown" style="float:right;">
               <div class="dropBtn"><span>${ name }</span><i class="material-icons" id="arrow">arrow_drop_down</i></div>
               <div class="dropdown-content">
-                <a href="${pageContext.request.contextPath}/views/">즐겨찾기</a>
+                <a href="${pageContext.request.contextPath}/views/favorite.jsp">즐겨찾기</a>
                 <a href="/MemberViewAction.Lo?${ email }">계 정</a>
-                <a href="${pageContext.request.contextPath}/views/">로그 아웃</a>
+                <a href="#">로그 아웃</a>
               </div>
             </div>
           </c:when>

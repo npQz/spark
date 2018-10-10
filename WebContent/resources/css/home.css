@@ -17,7 +17,9 @@
 
 .contentWrapper {
     position: relative;
-    display: table;
+    display: flex;
+    justify-content: center;
+    align-self: center;
     width: 70%;
     max-width: 1024px;
     height: 100%;
@@ -25,9 +27,8 @@
 }
 
 .contentItem {
-    display: table-cell;
-    vertical-align: middle;
-    margin-top: 60px;
+    width: 100%;
+    margin-top: 35vh;
 }
 
 .contentItem-title {

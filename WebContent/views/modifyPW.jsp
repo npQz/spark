@@ -1,76 +1,87 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: H
-  Date: 2018-10-08
-  Time: 오전 2:55
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set value="${ dto }" var="data"/>
+
 <html>
 <head>
-  <title>modify password</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1"/>
+
+  <title>Spark - Account</title>
+
+  <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/normalize.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/modifyPW.css">
 
   <style>
-
-    .pwContent {
-      width: 100%;
-      height: 100%;
-    }
-
-    input {
-      width: 100%;
-    }
-
-    .pwTitle {
-      margin-bottom: 10px;
-    }
-
-    input[type=button] {
-      color: #bdbdbd;
-      font-size: 18px;
-      background: #5C9C7B;
-      border: 0;
-      width: 100%;
-      height: 40px;
-      border-radius: 3px;
-      text-align: center;
-    }
-
-    input[type=button]:hover {
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .inputCmt {
-      padding: 5px 0 0 10px;
-      margin-bottom: 30px;
-      color: #f00;
-      font-size: 15px;
-    }
 
   </style>
 
 </head>
+
 <body>
 
-  <div class="pwContent">
-    <div class="pwCon-old">
-      <form name="modifyPWForm" action="#" method="post">
-        <div class="pwTitle old-title"><label for="old_pw">현재 비밀번호</label></div>
-        <input type="password" name="old_pw" class="old_pw" id="old_pw">
-        <div class="inputCmt" id="oldPw-Cmt"></div>
-        <div class="pwTitle new-title"><label for="new_pw">새 비밀번호</label></div>
-        <input type="password" name="new_pw" class="new_pw" id="new_pw">
-        <div class="inputCmt" id="newPw-Cmt"></div>
-        <div class="pwTitle newRe-title"><label for="new_pw_re">새 비밀번호 확인</label></div>
-        <input type="password" name="new_pw_re" class="new_pw_re" id="new_pw_re">
-        <div class="inputCmt" id="newPw_re-Cmt"></div>
-        <input type="button" value="비밀번호 변경" onclick="modifyPW()">
-      </form>
-    </div>
-  </div>
+  <main>
+    <div class="panelWrapper">
+      <div class="leftPanel">
+        <div class="leftPanel-cover">
+          <div class="infoWrapper">
+            <div class="infoContents">
+              <div class="info-title">
+                프로필
+              </div>
+              <div class="info-subTitle">
+                당신의 프로필을 확인하고 비밀번호를 변경할 수 있습니다
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="rightPanel">
+        <div class="inputWrapper">
+          <div class="inputContents">
+            <div class="inputInfo">
+              <div class="input-icon"><i class="material-icons">local_parking</i></div>
+              <div class="inputSubtitle" id="inputSubtitle1">
+                주차장을 찾으시나요? <a href="/Home.Lo">홈으로</a>
+              </div>
+              <div class="inputSubtitle" id="inputSubtitle2">
+                회원 정보를 보고 싶으신가요? <a href="javascript:history.go(-1)">회원 정보</a>
+              </div>
+            </div>
+
+            <form action="#" method="post" name="modifyPWForm">
+              <div class="pwTitle old-title"><label for="old_pw">현재 비밀번호</label></div>
+              <input type="password" name="old_pw" class="old_pw" id="old_pw">
+              <div class="inputCmt" id="oldPw-Cmt"></div>
+              <div class="pwTitle new-title"><label for="new_pw">새 비밀번호</label></div>
+              <input type="password" name="new_pw" class="new_pw" id="new_pw">
+              <div class="inputCmt" id="newPw-Cmt"></div>
+              <div class="pwTitle newRe-title"><label for="new_pw_re">새 비밀번호 확인</label></div>
+              <input type="password" name="new_pw_re" class="new_pw_re" id="new_pw_re">
+              <div class="inputCmt" id="newPw_re-Cmt"></div>
+              <input type="button" value="비밀번호 변경" onclick="modifyPW()">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="../resources/js/modifyPW.js"></script>
+
+  <script>
+
+  </script>
 
 </body>
 </html>

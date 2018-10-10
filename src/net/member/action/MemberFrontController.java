@@ -122,7 +122,7 @@ public class MemberFrontController extends HttpServlet {
 			}
 
 		} /* ajax test */
-		else if (command.equals("/ajaxTest.Lo")) {
+		else if (command.equals("/IdChk.Lo")) {
 			
 			String email = request.getParameter("email");
 			
