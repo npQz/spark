@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:set value="${ sessionScope.name }" var="username" />
+<c:set value="${ sessionScope.name }" var="username"/>
 
 <html>
 <head>
@@ -32,6 +32,7 @@
     <div class="contentWrapper">
       <div class="contentItem">
         <div class="contentItem-title" id="contentItem-title">서울시의 주차장을 한 눈에!</div>
+        <%--<div><a href="/bmkAddAction.me?PARKING_NAME=${ "주차장이름" }&ADDR=${ '목동' }">즐겨찾기 추가</a></div>--%>
         <div id="hide-items">
           <div class="contentItem-info">
             <div class="contentItem-info-1">서울시 내의 공영주차장과 민영주차장의</div>
@@ -42,7 +43,8 @@
           <form action="./BoardSearch.bo">
             <div class="searchBar-items" id="searchBar-items">
               <button class="searchBar-icon" type="submit" id="search-btn"><i class="material-icons">search</i></button>
-              <input class="searchBar-content" name="BOARD_NAME" type="text" placeholder="주소 또는 주차장 이름 입력" aria-label="Search" id="tags">
+              <input class="searchBar-content" name="BOARD_NAME" type="text" placeholder="주소 또는 주차장 이름 입력"
+                     aria-label="Search" id="tags">
             </div>
             <div class="searchBar-comment">
               <p id="searchVal-comment"></p>

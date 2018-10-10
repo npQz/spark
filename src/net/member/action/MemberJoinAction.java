@@ -24,12 +24,11 @@ public class MemberJoinAction implements Action {
 		dto.setAGE(request.getParameter("age"));
 		dto.setGENDER(request.getParameter("gender"));
 		
-		
-		System.out.println(dto.getEMAIL());
+		/*System.out.println(dto.getEMAIL());
 		System.out.println(dto.getPASSWORD());
 		System.out.println(dto.getNAME());
 		System.out.println(dto.getAGE());
-		System.out.println(dto.getGENDER());
+		System.out.println(dto.getGENDER());*/
 		
 		result= dao.memberInsert(dto);
 		

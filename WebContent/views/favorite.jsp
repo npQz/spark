@@ -50,11 +50,8 @@
                 <span>${ list.BOOKMARK_TEL }</span>
               </div>
             </div>
-            <%--<div class="card-item-right">
-              <div class="card-list-writer"><i class="material-icons">stars</i></div>
-            </div>--%>
             <div class="card-item-right">
-              <a href="/BmkDelete.me?BOOKMARK_NAME=${ list.BOOKMARK_NAME }">즐겨찾기 제거</a>
+              <div class="card-list-writer"><a href="/BmkDelete.me?BOOKMARK_NAME=${ list.BOOKMARK_NAME }"><i class="material-icons">bookmark</i></a></div>
             </div>
           </div>
           </c:forEach>
