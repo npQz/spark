@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 @WebServlet("*.me")
 public class BookmarkFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,7 +35,7 @@ public class BookmarkFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 
-		if (command.equals("/BookmarkList.me")) {
+		/*if (command.equals("/BookmarkList.me")) {
 			action = new BookmarkListAction();
 
 			try {
@@ -67,6 +65,29 @@ public class BookmarkFrontController extends HttpServlet {
 		} else {
 			System.out.println("data flow fail");
 
+		}*/
+		
+		if (command.equals("/BmkView.me")) {
+			action = new BmkListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if (command.equals("/BmkDelete.me")) {
+			action = new BmkDelete();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else {
+			System.out.println("data flow fail");
+			
 		}
 		
 		if (forward != null) {

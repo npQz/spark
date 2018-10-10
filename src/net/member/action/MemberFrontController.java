@@ -65,8 +65,9 @@ public class MemberFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/views/account.jsp");
+	
 		
-			
+		
 		}else if(command.equals("/MemberViewAction.Lo")){
 		   action = new MemberViewAction();
 		   try{
@@ -121,7 +122,8 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		} /* ajax test */
+		}
+		/* ajax test */
 		else if (command.equals("/IdChk.Lo")) {
 			
 			String email = request.getParameter("email");
@@ -138,7 +140,7 @@ public class MemberFrontController extends HttpServlet {
 				out.print("success");
 			}
 			
-		}else {
+		} else {
 			System.out.println("data flow fail");
 
 		}

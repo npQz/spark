@@ -3,7 +3,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:set value="${ sessionScope.name }" var="username"/>
+<c:set value="${ sessionScope.name }" var="username" />
+<c:set value="${ bmkList }" var="list" />
 
 <html>
 <head>
@@ -23,6 +24,13 @@
 
 </head>
 
+<style>
+  .card-item-right a {
+    color: #000;
+  }
+  
+</style>
+
 <body>
 
   <jsp:include page="format/header.jsp"/>
@@ -31,61 +39,25 @@
     <div class="mainImg-cover">
       <div class="contentWrapper">
         <div class="contentItem">
-          <div class="card-list" onclick="goContentPage(${ no })">
+          <c:forEach items="${ list }" var="list">
+          <div class="card-list"> <%--onclick="goContentPage(${ no })--%>
             <div class="card-item-left">
-              <span class="card-list-title">아카데미 노상공영(구)</span>
-              <div class="card-list-content">
-                <span>강북구 수유동 535-76</span>
+              <span class="card-list-name">${ list.BOOKMARK_NAME }</span>
+              <div class="card-list-addr">
+                <span>${ list.BOOKMARK_ADDR }</span>
+              </div>
+              <div class="card-list-tel">
+                <span>${ list.BOOKMARK_TEL }</span>
               </div>
             </div>
-            <div class="card-item-right">
+            <%--<div class="card-item-right">
               <div class="card-list-writer"><i class="material-icons">stars</i></div>
+            </div>--%>
+            <div class="card-item-right">
+              <a href="/BmkDelete.me?BOOKMARK_NAME=${ list.BOOKMARK_NAME }">즐겨찾기 제거</a>
             </div>
           </div>
-          <div class="card-list" onclick="goContentPage(${ no })">
-            <div class="card-item-left">
-              <span class="card-list-title">아카데미 노상공영(구)</span>
-              <div class="card-list-content">
-                <span>강북구 수유동 535-76</span>
-              </div>
-            </div>
-            <div class="card-item-right">
-              <div class="card-list-writer"><i class="material-icons">stars</i></div>
-            </div>
-          </div>
-          <div class="card-list" onclick="goContentPage(${ no })">
-            <div class="card-item-left">
-              <span class="card-list-title">아카데미 노상공영(구)</span>
-              <div class="card-list-content">
-                <span>강북구 수유동 535-76</span>
-              </div>
-            </div>
-            <div class="card-item-right">
-              <div class="card-list-writer"><i class="material-icons">stars</i></div>
-            </div>
-          </div>
-          <div class="card-list" onclick="goContentPage(${ no })">
-            <div class="card-item-left">
-              <span class="card-list-title">아카데미 노상공영(구)</span>
-              <div class="card-list-content">
-                <span>강북구 수유동 535-76</span>
-              </div>
-            </div>
-            <div class="card-item-right">
-              <div class="card-list-writer"><i class="material-icons">stars</i></div>
-            </div>
-          </div>
-          <div class="card-list" onclick="goContentPage(${ no })">
-            <div class="card-item-left">
-              <span class="card-list-title">아카데미 노상공영(구)</span>
-              <div class="card-list-content">
-                <span>강북구 수유동 535-76</span>
-              </div>
-            </div>
-            <div class="card-item-right">
-              <div class="card-list-writer"><i class="material-icons">stars</i></div>
-            </div>
-          </div>
+          </c:forEach>
         </div>
       </div>
     </div>
@@ -96,37 +68,9 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/favorite.js"></script>
 
   <script>
-
-    /* autocomplete with JQuery */
-    $(function () {
-      $.getJSON('${pageContext.request.contextPath}/resources/json/addr.json', function (items) {
-        var tags_name = [];
-        var tags_addr = [];
-        var tags_all = [];
-        $.each(items, function (i, item) {
-          tags_name[i] = item.PARKING_NAME;
-          tags_addr[i] = item.ADDR;
-        });
-
-        tags_all = tags_name.concat(tags_addr);
-        /*console.log(tags_name);
-        console.log(tags_addr);
-        console.log(tags_all);*/
-
-        $("#tags").autocomplete({
-          source: tags_all
-        });
-      });
-    });
-
-    clickMobileBtn('#navMenu-mobile-btn', '.navMenu-mobile');
-
-    clickSearchbar('#tags', '#hide-items', '#contentItem-title');
-
-    chkSearching('#search-btn', '#tags', 'searchVal-comment');
 
   </script>
 

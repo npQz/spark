@@ -2,6 +2,7 @@ package net.member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class MemberLogoutAction implements Action {
 
@@ -9,13 +10,17 @@ public class MemberLogoutAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		ActionForward forward = new ActionForward();
+		     
+		HttpSession session = request.getSession();
 		
-		request.getSession().invalidate();
+		session.invalidate();
+		
+//		request.getSession().invalidate();
 		
 		forward.setRedirect(true);
-		forward.setPath("./Home.Lo");
+		forward.setPath("/Home.Lo");
 		
-		return null;
+		return forward;
 	}
 
 }

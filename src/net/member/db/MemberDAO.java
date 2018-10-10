@@ -145,7 +145,7 @@ public class MemberDAO {
     
   }
   
-  public boolean memberModify(MemberDTO dto) {
+  /*public boolean memberModify(MemberDTO dto) {
     
     String sql = "UPDATE MEMBER SET PASSWORD = ? WHERE EMAIL = ? ";
     
@@ -154,7 +154,7 @@ public class MemberDAO {
       pstmt = con.prepareStatement(sql);
       pstmt.setString(1, dto.getPASSWORD());
       pstmt.setString(2, dto.getEMAIL());
-      
+            
       pstmt.executeUpdate();
       
       return true;
@@ -164,14 +164,45 @@ public class MemberDAO {
     } finally {
       if (pstmt != null) try {
         pstmt.close();
-      } catch (SQLException e) { /*e.printStackTrace();*/ }
+      } catch (SQLException e) { e.printStackTrace(); }
       if (con != null) try {
         con.close();
-      } catch (SQLException e) { /*e.printStackTrace();*/ }
+      } catch (SQLException e) { e.printStackTrace(); }
     }
     
     return false;
-  }
+  }*/
+  
+  public boolean memberModify(String email, String new_pw) {
+	    
+	    String sql = "UPDATE MEMBER SET PASSWORD = ? WHERE EMAIL = ? ";
+	    
+	    System.out.println(email);
+	    System.out.println(new_pw);
+	    
+	    try {
+	      con = ds.getConnection();
+	      pstmt = con.prepareStatement(sql);
+	      pstmt.setString(1, new_pw);
+	      pstmt.setString(2, email);
+	            
+	      pstmt.executeUpdate();
+	      
+	      return true;
+	      
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	    } finally {
+	      if (pstmt != null) try {
+	        pstmt.close();
+	      } catch (SQLException e) { /*e.printStackTrace();*/ }
+	      if (con != null) try {
+	        con.close();
+	      } catch (SQLException e) { /*e.printStackTrace();*/ }
+	    }
+	    
+	    return false;
+	  }
   
   public MemberDTO getDetail(String email) {
     String sql = "SELECT * FROM MEMBER WHERE EMAIL =? ";
@@ -193,7 +224,7 @@ public class MemberDAO {
         return dto;
       }
       
-      
+
     } catch (SQLException e) {
       e.printStackTrace();
     } finally {
@@ -211,6 +242,39 @@ public class MemberDAO {
     return null;
   }
   
+  public MemberDTO chkMem(String email) {
+	    String sql = "SELECT * FROM MEMBER WHERE EMAIL =? ";
+	    
+	    try {
+	      con = ds.getConnection();
+	      pstmt = con.prepareStatement(sql);
+	      pstmt.setString(1, email);
+	      rs = pstmt.executeQuery();
+	      
+	      while (rs.next()) {
+	        MemberDTO dto = new MemberDTO();
+	        dto.setPASSWORD(rs.getString("PASSWORD"));
+	        System.out.println("success chk");
+	        return dto;
+	      }
+	      	      
+	    } catch (SQLException e) {
+	      e.printStackTrace();
+	    } finally {
+	      if (rs != null) try {
+	        rs.close();
+	      } catch (SQLException e) { /*e.printStackTrace();*/ }
+	      if (pstmt != null) try {
+	        pstmt.close();
+	      } catch (SQLException e) { /*e.printStackTrace();*/ }
+	      if (con != null) try {
+	        con.close();
+	      } catch (SQLException e) { /*e.printStackTrace();*/ }
+	    }
+	    
+	    return null;
+	  }
+  
   
   public boolean memberDelete(String email) {
     String sql = "DELETE FROM MEMBER WHERE EMAIL = ? ";
@@ -220,14 +284,9 @@ public class MemberDAO {
       con = ds.getConnection();
       pstmt = con.prepareStatement(sql);
       pstmt.setString(1, email);
-      
-      
       result = pstmt.executeUpdate();
-      
-      
-      if (result != 0) {
-        return true;
-      }
+     
+      return true;
       
     } catch (SQLException e) {
       e.printStackTrace();

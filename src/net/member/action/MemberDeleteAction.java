@@ -22,44 +22,17 @@ public class MemberDeleteAction implements Action {
 		
 		boolean result = false;
 		
-		String  email = (String) session.getAttribute("email");
-		
-		System.out.println(email);
-		
-		if(email == null) {
-			forward.setRedirect(true);
-			forward.setPath("home.Lo");
-			
-			return forward;
-		
-		} /*else if(email != null) {
-			response.setContentType("UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('데이터베이스 오류.')");
-			out.println("location.href ='home.Lo';");
-			out.println("</script>");
-			out.close();
-			
-			return null;
-		}*/
-		
-		/*String deleteEmail = request.getParameter("email");*/
-		
-		System.out.println(email);
+		String email = (String) session.getAttribute("email");
 		
 		result=dao.memberDelete(email);
+		request.getSession().invalidate();
 		
 		if(result == false) {
 				System.out.println("회원 삭제 실패");
 				return null;
 		}
-		
-		session.invalidate();
-		
 		forward.setRedirect(true);
-		forward.setPath("/home.Lo");
+		forward.setPath("/Home.Lo");
 		return forward;
 	}
-
 }

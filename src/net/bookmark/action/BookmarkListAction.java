@@ -20,14 +20,16 @@ public class BookmarkListAction implements Action {
 		HttpSession session = request.getSession();
 		String email=(String)session.getAttribute("email");
 		
-		if(email == null) {
+		/*if(email == null) {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
 			
-		}
+		}*/
+		// 어차피 로그인 안하면 email null 이기 때문에
+		
 		Vector vector = bmdao.getBookmarkList(email);
 		List bookmarklist = (ArrayList)vector.get(0);
 		List parklist = (ArrayList)vector.get(1);
