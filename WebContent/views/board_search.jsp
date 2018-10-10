@@ -46,11 +46,8 @@
   var Search2 = 0;
 
   $(document).ready(function(){
-    alert('before');
 
     $.get("/resources/json/data2.json", function(data) {
-
-      alert('after');
 
       if(SearchAdd==null){
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div

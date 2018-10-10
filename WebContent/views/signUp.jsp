@@ -101,7 +101,7 @@
                 </div>
               </div>
               <%--<input type="submit" name="submit" id="submitBtn" value="회원 가입">--%>
-              <input type="button" value="회원가입" onclick="chkSignUp()">
+              <input type="button" value="회원가입" id="signUpBtn" onclick="chkSignUp()">
             </form>
           </div>
         </div>
@@ -116,7 +116,7 @@
   <script src="../resources/js/signUp.js"></script>
 
   <script>
-
+    enterSignUp('signUpBtn');
   </script>
 
 </body>

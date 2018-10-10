@@ -121,7 +121,7 @@ function chkSignUp() {
 
 }
 
-
+/* id check with AJAX */
 function idChk() {
   var _email = $('#email').val();
 
@@ -135,4 +135,52 @@ function idChk() {
       }
     }
   })
+}
+
+/* trigger btn when press enter */
+function enterSignUp(btn) {
+  var _email = document.signUpForm.email;
+  var _pw = document.signUpForm.pw;
+  var _pw_re = document.signUpForm.pw_re;
+  var _name = document.signUpForm.name;
+  var _age = document.signUpForm.age;
+  var _gender = document.signUpForm.gender;
+
+  var _btn = document.getElementById(btn);
+
+  _email.addEventListener('keyup', function (event) {
+    if (event.keyCode === 13) {
+      // Trigger the button element with a click
+      _btn.click();
+    }
+  });
+
+  _pw.addEventListener('keyup', function () {
+    if (event.keyCode === 13) {
+      // Trigger the button element with a click
+      _btn.click();
+    }
+  });
+
+  _pw_re.addEventListener('keyup', function () {
+    if (event.keyCode === 13) {
+      // Trigger the button element with a click
+      _btn.click();
+    }
+  });
+
+  _name.addEventListener('keyup', function () {
+    if (event.keyCode === 13) {
+      // Trigger the button element with a click
+      _btn.click();
+    }
+  });
+
+  _age.addEventListener('keyup', function () {
+    if (event.keyCode === 13) {
+      // Trigger the button element with a click
+      _btn.click();
+    }
+  });
+
 }

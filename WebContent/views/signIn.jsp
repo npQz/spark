@@ -58,7 +58,7 @@
                 <div class="inputCmt" id="pwCmt"></div>
               </div>
               <%--<input type="submit" name="submit" id="submitBtn" value="로그인">--%>
-              <input type="button" value="로그인" onclick="chkSignIn()">
+              <input type="button" value="로그인" id="signInBtn" onclick="chkSignIn()">
             </form>
           </div>
         </div>
@@ -70,6 +70,10 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="../resources/js/signIn.js"></script>
+
+  <script>
+    enterSignIn('signInBtn');
+  </script>
 
 </body>
 </html>

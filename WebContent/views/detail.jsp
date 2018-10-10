@@ -53,7 +53,7 @@
                 <div>
                   <h6 class="my-0">주차장명</h6>
                 </div>
-                <span class="text-muted">홍길동</span>
+                <span class="text-muted"><c:out value="${name}" /></span>
               </li>
               <li
                   class="list-group-item d-flex justify-content-between lh-condensed">
@@ -61,7 +61,7 @@
                   <h6 class="my-0">위치</h6>
                   <!-- <small class="text-muted">Brief description</small> -->
                 </div>
-                <span class="text-muted">경기도 고양시 일산서구 주엽동</span>
+                <span class="text-muted"><c:out value="${addr}" /></span>
               </li>
               <li
                   class="list-group-item d-flex justify-content-between lh-condensed">
@@ -69,7 +69,7 @@
                   <h6 class="my-0">종류</h6>
                   <!-- <small class="text-muted">Brief description</small> -->
                 </div>
-                <span class="text-muted">공영주차장</span>
+                <span class="text-muted"><c:out value="${type}" />/<c:out value="${rule}" />/<c:out value="${night}" /></span>
               </li>
               <li
                   class="list-group-item d-flex justify-content-between lh-condensed">
@@ -77,7 +77,7 @@
                   <h6 class="my-0">전화번호</h6>
                   <!-- <small class="text-muted">Brief description</small> -->
                 </div>
-                <span class="text-muted">010-3479-2106</span>
+                <span class="text-muted"><c:out value="${tel}" /></span>
               </li>
               <li
                   class="list-group-item d-flex justify-content-between lh-condensed">
@@ -85,7 +85,7 @@
                   <h6 class="my-0">크기</h6>
                   <!-- <small class="text-muted">Brief description</small> -->
                 </div>
-                <span class="text-muted">대형주차장</span>
+                <span class="text-muted"><c:out value="${capa}" /></span>
               </li>
               <li
                   class="list-group-item d-flex justify-content-between lh-condensed">
@@ -93,7 +93,7 @@
                   <h6 class="my-0">유/무료</h6>
                   <!-- <small class="text-muted">Brief description</small> -->
                 </div>
-                <span class="text-muted">유료</span>
+                <span class="text-muted">평일:<c:out value="${pnm}" />/토요일:<c:out value="${spnm}" />/공휴일:<c:out value="${hpnm}" /></span>
               </li>
               <li
                   class="list-group-item d-flex justify-content-between lh-condensed">
@@ -101,15 +101,15 @@
                   <h6 class="my-0">주차 가능시간</h6>
                 
                 </div>
-                <span class="text-muted">08:00~24:00</span>
+                <span class="text-muted">평일:<c:out value="${wdbt}" />~<c:out value="${wdet}" />/주말:<c:out value="${webt}" />~<c:out value="${weet}" />/공휴일:<c:out value="${hdbt}" />~<c:out value="${hdet}" /></span>
               </li>
               <li
                   class="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
                   <h6 class="my-0">요금</h6>
-                  <small class="text-muted">시간당</small>
+                  <small class="text-muted"><c:out value="${time}" />분당</small>
                 </div>
-                <span class="text-muted">2,000원</span>
+                <span class="text-muted"><c:out value="${rate}" />원/추가요금:<c:out value="${addtime}" />분당 <c:out value="${addrate}" />원</span>
               </li>
               <li
                   class="list-group-item d-flex justify-content-between lh-condensed">
@@ -117,7 +117,7 @@
                   <h6 class="my-0">요금</h6>
                   <small class="text-muted">1일</small>
                 </div>
-                <span class="text-muted">30,000원</span>
+                <span class="text-muted"><c:out value="${drate}" />원</span>
               </li>
               <li
                   class="list-group-item d-flex justify-content-between lh-condensed">
@@ -125,7 +125,7 @@
                   <h6 class="my-0">요금</h6>
                   <small class="text-muted">30일</small>
                 </div>
-                <span class="text-muted">80,000원</span>
+                <span class="text-muted"><c:out value="${mrate}" />원</span>
             </ul>
             <div class="favorite">
               <button type="button" class="btn btn-1g btn-block btn-primary">자주 가는 주차장에 등록</button>
@@ -142,8 +142,8 @@
 
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="WebContent/resources/bs/jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/resources/bs/jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bs/js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script

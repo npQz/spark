@@ -53,3 +53,25 @@ function chkSignIn() {
   }
 
 }
+
+/* trigger btn when press enter */
+function enterSignIn(btn) {
+  var _email = document.signInForm.email;
+  var _pw = document.signInForm.pw;
+  var _btn = document.getElementById(btn);
+
+  _email.addEventListener('keyup', function (event) {
+    if (event.keyCode === 13) {
+      // Trigger the button element with a click
+      _btn.click();
+    }
+  });
+
+  _pw.addEventListener('keyup', function () {
+    if (event.keyCode === 13) {
+      // Trigger the button element with a click
+      _btn.click();
+    }
+  });
+
+}

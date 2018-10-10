@@ -49,8 +49,6 @@ create table SPark(
 );
 
 
-
-
 select *from member;
 
 select * from bookmark;
