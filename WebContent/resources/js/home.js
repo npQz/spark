@@ -31,14 +31,19 @@ function chkSearching(searchBtn, searchBar, valCmt) {
     $(_searchBtn).click(function () {
 
         if ($(_searchBar).val().length === 0) {
-            _valCmt.innerHTML = "please insert any content";
+            _valCmt.innerHTML = "검색창에 주차장을 입력해주세요";
             return false;
         } else if ($('#tags').val().length < 3) {
-            _valCmt.innerHTML = "please insert over 2 words";
+            _valCmt.innerHTML = "세 글자 이상 입력해주세요";
             return false;
         } else {
             return true;
         }
     });
+}
+
+/* go to detail page */
+function goContentPage(name) {
+  window.location.href = '/BoardSearchAction?PARKING_NAME' + name;
 }
 

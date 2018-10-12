@@ -126,7 +126,7 @@ function idChk() {
   var _email = $('#email').val();
 
   $.ajax({
-    url: "IdChk.Lo?email=" + _email,
+    url: "IdChk.aj?email=" + _email,
     success: function (data) {
       if (data == 'success') {
         alert('사용가능한 이메일입니다.');
@@ -144,41 +144,35 @@ function enterSignUp(btn) {
   var _pw_re = document.signUpForm.pw_re;
   var _name = document.signUpForm.name;
   var _age = document.signUpForm.age;
-  var _gender = document.signUpForm.gender;
 
   var _btn = document.getElementById(btn);
 
   _email.addEventListener('keyup', function (event) {
     if (event.keyCode === 13) {
-      // Trigger the button element with a click
       _btn.click();
     }
   });
 
   _pw.addEventListener('keyup', function () {
     if (event.keyCode === 13) {
-      // Trigger the button element with a click
       _btn.click();
     }
   });
 
   _pw_re.addEventListener('keyup', function () {
     if (event.keyCode === 13) {
-      // Trigger the button element with a click
       _btn.click();
     }
   });
 
   _name.addEventListener('keyup', function () {
     if (event.keyCode === 13) {
-      // Trigger the button element with a click
       _btn.click();
     }
   });
 
   _age.addEventListener('keyup', function () {
     if (event.keyCode === 13) {
-      // Trigger the button element with a click
       _btn.click();
     }
   });

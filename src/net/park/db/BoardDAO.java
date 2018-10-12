@@ -27,101 +27,48 @@ public class BoardDAO {
 		}
 	}
 	
-	/*
-	//글 목록보기
-	public List<BoardDTO> getBoardList(int page, int limit) {
-		String board_list_sql = "select * from "+
-				"(select rownum rnum,BOARD_NUM,BOARD_NAME,BOARD_SUBJECT,"+
-				"BOARD_CONTENT,BOARD_FILE,BOARD_RE_REF,BOARD_RE_LEV,"+
-				"BOARD_RE_SEQ,BOARD_READCOUNT,BOARD_DATE from "+
-				"(select * from board order by BOARD_RE_REF desc,BOARD_RE_SEQ asc)) "+
-				"where rnum>=? and rnum<=?";
-		
-		List<BoardDTO> list = new ArrayList<BoardDTO>();
-		
-		int startrow = (page-1)*10 + 1;
-		int endrow = startrow + limit - 1;
-		
-		try {
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(board_list_sql);
-			pstmt.setInt(1, startrow);
-			pstmt.setInt(2, endrow);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {//데이터가 있으면 트루
-				BoardDTO board = new BoardDTO();//rs의 데이터 값을 dto에 넣어준다
-				
-				board.setBOARD_NUM(rs.getInt("BOARD_NUM"));
-				board.setBOARD_NAME(rs.getString("BOARD_NAME"));
-				board.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
-				board.setBOARD_CONTENT(rs.getString("BOARD_CONTENT"));
-				board.setBOARD_FILE(rs.getString("BOARD_FILE"));
-				board.setBOARD_RE_REF(rs.getInt("BOARD_RE_REF"));
-				board.setBOARD_RE_LEV(rs.getInt("BOARD_RE_LEV"));
-				board.setBOARD_RE_SEQ(rs.getInt("BOARD_RE_SEQ"));
-				board.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT"));
-				board.setBOARD_DATE(rs.getDate("BOARD_DATE"));
-				
-				list.add(board);
+	//시간계산
+		public String timeSet(String before) {
+			String time = before;
+			String colon = ":";
+			int pos = 0;
+			System.out.println("::"+time.length());
+			time = time.trim();
+			if(time.length() == 1) {
+				time = "자정";
+				//System.out.println("1");
+				return time;
+			}else if(time.length() == 3) {
+				//System.out.println("2");
+				pos = 1;
+			}else {
+				//System.out.println("3");
+				pos = 2;
 			}
-			
-			return list;
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {//초기화기능
-			if(rs != null) try{rs.close();} catch(SQLException e) {}
-			if(pstmt != null) try{pstmt.close();} catch(SQLException e) {}
-			if(con != null) try{con.close();} catch(SQLException e) {}
+			//System.out.println("4");
+			time = time.substring(0, pos)+colon+time.substring(pos);
+			return time;
 		}
-		
-		return null;
-	}
-	*/
-	
-	/*
-	//조회수 업데이트
-	public void setReadCountUpdate(int num) {
-		//조회수 증가
-		String sql = "update board set BOARD_READCOUNT = BOARD_READCOUNT+1 where BOARD_NUM="+num;
-		
-		try {
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {//초기화기능
-			if(rs != null) try{rs.close();} catch(SQLException e) {} 업데이트에서는 필요없다
-			if(pstmt != null) try{pstmt.close();} catch(SQLException e) {}
-			if(con != null) try{con.close();} catch(SQLException e) {}
-		}
-	}
-	*/
 	
 	
 	//글 내용 보기(세부항목)
-	public BoardDTO getDetail(String name) {
+	public BoardDTO getDetail(String code) {
 		BoardDTO board = null;
-		String sql = "select * from SPark where PARKING_CODE = "+name;
-		System.out.println("담아주기전");
+		String sql = "select * from SPark where PARKING_CODE = ?";
 		
 		try {
 			
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
-			//pstmt.setString(1, name); // 왜 안되는지 아무리 해봐도 의문
-			
+			pstmt.setString(1,code); 
 			rs = pstmt.executeQuery();
-			
+			System.out.println(rs);
+			System.out.println(rs.next());
 			
 			if(rs.next()) {
 				board = new BoardDTO();
 				
-				board.setParking_code(rs.getString("PARKING_CODE"));
-				board.setParking_name(rs.getString("PARKING_NAME"));
+				board.setParking_name(rs.getString("PARKING_NAME"));				
 				board.setAddr(rs.getString("ADDR"));
 				board.setParking_type(rs.getString("PARKING_TYPE"));
 				board.setParking_type_nm(rs.getString("PARKING_TYPE_NM"));
@@ -153,13 +100,54 @@ public class BoardDAO {
 				board.setLat(rs.getString("LAT"));
 				board.setLng(rs.getString("LNG"));
 				
-				System.out.println("!!!!");
+				return board;
 			}
 			
-			System.out.println("담아준 후");
 			
-			System.out.println(board.getParking_name());
-			return board;
+			/*System.out.println(board.getParking_name());
+			
+			return board;*/
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {//초기화기능
+			if(rs != null) try{rs.close();} catch(SQLException e) {}
+			if(pstmt != null) try{pstmt.close();} catch(SQLException e) {}
+			if(con != null) try{con.close();} catch(SQLException e) {}
+		}
+		
+		return null;
+	}
+	
+	public BoardDTO getInfo(String name) {
+		String sql = "SELECT * FROM SPARK WHERE PARKING_NAME=?";
+		
+		try {
+			
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			
+			System.out.println(rs);
+			System.out.println("before");
+			
+			while (rs.next()) {
+				System.out.println("after");
+				BoardDTO board = new BoardDTO();
+								
+				board.setParking_name(rs.getString("PARKING_NAME"));
+				board.setAddr(rs.getString("ADDR"));
+				board.setTel(rs.getString("TEL"));
+								
+				System.out.println(board.getParking_name());
+				System.out.println(board.getAddr());
+				System.out.println(board.getTel());
+				
+				return board;
+			}
+			
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

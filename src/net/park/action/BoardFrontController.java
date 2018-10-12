@@ -38,9 +38,13 @@ public class BoardFrontController extends HttpServlet {
 		//입력처리단
 		//디비 연동 필요 없는 페이지 보넸을때
 		if(command.equals("/BoardSearch.bo")) {
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("/views/board_search.jsp");
+			action = new BoardListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		
 		//디비 연동 페이지 보넸을때
 		}else if(command.equals("/BoardSearchAction.bo")){

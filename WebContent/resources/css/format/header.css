@@ -85,6 +85,12 @@
     display: none;
 }
 
+#navMenu-mobile-btn2 {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
 .navMenu-mobile .navItem-mobile-li a {
     display: none;
     padding: 10px 0 10px 20px;

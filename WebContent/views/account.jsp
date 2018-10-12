@@ -35,7 +35,7 @@
               프로필
             </div>
             <div class="info-subTitle">
-              당신의 프로필을 확인하고 비밀번호를 변경할 수 있습니다
+              당신의 프로필을 확인하고 비밀번호를 변경할 수 있습니다. <br>삭제만은 제발...
             </div>
           </div>
         </div>
@@ -51,37 +51,34 @@
               주차장을 찾으시나요? <a href="/Home.Lo">홈으로</a>
             </div>
           </div>
-          
-          <form action="/MemberJoinAction.Lo" method="post" name="signUpForm">
-            <div class="inputWrapper-1">
-              <div class="input-email">
-                <div class="inputTitle">이메일</div>
-                <span class="textArea">${ dto.EMAIL }</span>
+          <div class="cardWrapper">
+            <div class="cardContents">
+              <div class="card-item card-email">
+                <div class="email-title">이메일</div>
+                <div class="email-content">${ dto.EMAIL }</div>
               </div>
-              <div class="input-name">
-                <div>닉네임</div>
-                <span class="textArea">${ dto.NAME}</span>
+              <div class="card-item card-username">
+                <div class="username-title">닉네임</div>
+                <div class="username-content">${ dto.NAME}</div>
+              </div>
+              <div class="card-item card-age">
+                <div class="age-title">나이</div>
+                <div class="age-content">${ dto.AGE}</div>
+              </div>
+              <div class="card-item card-gender">
+                <div class="gender-title">성별</div>
+                <div class="gender-content">${ dto.GENDER}</div>
+              </div>
+              <div class="card-item card-modifyPW" onclick="window.open('${pageContext.request.contextPath}/views/modifyPW.jsp', '_blank', 'width=600 height=500')">
+                <div class="modifyPW-title">비밀번호 변경</div>
+                <div class="modifyPW-content"><i class="material-icons">keyboard_arrow_right</i></div>
+              </div>
+              <div class="card-item card-deleteAcc" onclick="window.open('${pageContext.request.contextPath}/views/deleteAccount.jsp', '_blank', 'width=500 height=300')">
+                <div class="deleteAcc-title">계정 삭제</div>
+                <div class="deleteAcc-content"><i class="material-icons">keyboard_arrow_right</i></div>
               </div>
             </div>
-            <div class="inputWrapper-2">
-              <div class="input-age">
-                <div>나이</div>
-                <span class="textArea">${ dto.AGE }</span>
-              </div>
-              <div class="input-gender">
-                <div>성별</div>
-                <span class="textArea">${ dto.GENDER }</span>
-              </div>
-            </div>
-            <%--<input type="button" onclick="window.open('http://localhost:8090/views/modifyPW.jsp', '_blank', 'width=300 height=350')" value="비밀번호 변경">
-            <input type="button" onclick="window.open('http://localhost:8090/views/deleteAccount.jsp', '_blank', 'width=300 height=200')" value="계정 삭제">--%>
-            
-            <div class="input-btn-Wrapper">
-              <input type="button" value="비밀번호 변경" onclick="window.location.href='${pageContext.request.contextPath}/views/modifyPW.jsp'">
-              <input type="button" value="계정 삭제" onclick="window.location.href='${pageContext.request.contextPath}/views/deleteAccount.jsp'">
-            </div>
-
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -95,6 +92,8 @@
 <script src="../resources/js/signUp.js"></script>
 
 <script>
+
+
 
 </script>
 

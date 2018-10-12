@@ -35,7 +35,8 @@ public class BookmarkFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 
-		/*if (command.equals("/BookmarkList.me")) {
+		if (command.equals("/BookmarkList.me")) {
+			System.out.println("list");
 			action = new BookmarkListAction();
 
 			try {
@@ -54,6 +55,7 @@ public class BookmarkFrontController extends HttpServlet {
 			}
 
 		} else if (command.equals("/BookmarkDelete.me")) {
+			System.out.println("delete");
 			action = new BookmarkDeleteAction();
 
 			try {
@@ -62,29 +64,6 @@ public class BookmarkFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		
-		} else {
-			System.out.println("data flow fail");
-
-		}*/
-		
-		if (command.equals("/BmkView.me")) {
-			action = new BmkListAction();
-			
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		} else if (command.equals("/BmkDelete.me")) {
-			action = new BmkDelete();
-			
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
 		} else {
 			System.out.println("data flow fail");
 			

@@ -1,95 +1,13 @@
 
-.panelWrapper {
-    display: flex;
-}
-
-.leftPanel {
-    background-image: url("../img/_account.jpg");
-    background-position: center;
-    background-size: cover;
-    height: 100%;
-    width: 40%;
-}
-
-.leftPanel-cover {
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.leftPanel .infoWrapper {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    color: #fff;
-}
-
-.leftPanel .infoContents {
-}
-
-.infoContents .info-title {
-    font-size: 45px;
-    margin-bottom: 50px;
-}
-
-.infoContents .info-subTitle {
-    font-size: 20px;
-}
-
-.rightPanel {
-    height: 100%;
-    width: 70%;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.rightPanel label {
-    font-size: 18px;
-}
-
 /* input properties start */
 .inputWrapper {
     position: relative;
-    top: 0;
+    top: 30px;
     bottom: 0;
     left: 0;
     right: 0;
     width: 75%;
     margin: auto;
-}
-
-.inputContents .inputInfo {
-    text-align: center;
-}
-
-.inputInfo .input-icon {
-    color: #5C9C7B;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.inputInfo .inputSubtitle {
-    font-size: 15px;
-    color: #999999;
-    margin-bottom: 25px;
-}
-
-#inputSubtitle2 {
-    margin-bottom: 80px;
-}
-
-.inputInfo .inputSubtitle a {
-    color: #999999;
-    text-decoration: underline;
-}
-
-.inputContents i {
-    font-size: 100px;
 }
 
 .inputContents input {
@@ -105,39 +23,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.inputWrapper-1 {
-    display: flex;
-}
-
-.inputWrapper-2 {
-    display: flex;
-}
-
-.input-email {
-    width: 50%;
-}
-
-.input-name {
-    width: 50%;
-}
-
-.input-age {
-    width: 50%;
-}
-
-.input-gender {
-    width: 50%;
-}
-
-.emailWrapper {
-    display: flex;
-}
-
-#email {
-    width: 100%;
-    border-radius: 3px 0 0 3px;
 }
 
 form > div {
@@ -160,15 +45,6 @@ form > div {
     border: 1px solid #000;
 }
 
-.inputTitle {
-    padding-bottom: 5px;
-}
-
-.textArea {
-    padding-left: 10px;
-    color: #616161;
-}
-
 .input-btn-Wrapper {
     display: flex;
     justify-content: space-around;
@@ -179,14 +55,6 @@ form > div {
     padding: 5px 0 0 10px;
     color: #f00;
     font-size: 15px;
-}
-
-#emailChk {
-    width: 30%;
-    height: 35px;
-    margin-bottom: 0;
-    font-size: 15px;
-    border-radius: 0 3px 3px 0;
 }
 
 .inputContents input[type=button] {
@@ -210,50 +78,3 @@ form > div {
 
 /* input properties end */
 
-/* for responsive start */
-
-@media screen and (max-width: 768px) {
-    .panelWrapper {
-        display: block;
-    }
-
-    .leftPanel {
-        width: 100%;
-        height: auto;
-    }
-
-    .leftPanel-cover {
-        width: 100%;
-        height: auto;
-        overflow: hidden;
-    }
-
-    .leftPanel .infoWrapper {
-        display: block;
-        height: auto;
-    }
-
-    .leftPanel .info-title {
-        font-size: 30px;
-        padding-top: 30px;
-        margin-bottom: 16px;
-    }
-
-    .leftPanel .info-subTitle {
-        font-size: 18px;
-        margin-bottom: 25px;
-    }
-
-    .rightPanel {
-        width: 100%;
-        height: auto;
-    }
-
-    .rightPanel .inputWrapper {
-        top: 50px;
-        width: 80%;
-    }
-
-}
-
-/* for responsive end */

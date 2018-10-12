@@ -1,16 +1,16 @@
-package net.bookmark.action;
+package net.member.action;
 
+import net.member.action.Action;
+import net.member.action.ActionForward;
 import net.bookmark.db.BookmarkDAO;
 import net.bookmark.db.BookmarkDTO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
-public class BmkListAction implements Action {
+public class HomeListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -26,8 +26,7 @@ public class BmkListAction implements Action {
 		request.setAttribute("bmkList", bmkList);
 		
 		forward.setRedirect(false);
-		forward.setPath("/views/favorite.jsp");
-		
+		forward.setPath("/views/home.jsp");
 		return forward;
 	}
 

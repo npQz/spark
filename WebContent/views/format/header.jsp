@@ -26,15 +26,23 @@
             <div class="dropdown" style="float:right;">
               <div class="dropBtn"><span>${ name }</span><i class="material-icons" id="arrow">arrow_drop_down</i></div>
               <div class="dropdown-content">
-                <a href="/BmkView.me">즐겨찾기</a>
+                <a id="myBtn1">즐겨찾기</a>
+                <%--<a href="/BmkView.me">즐겨찾기</a>--%>
                 <a href="/MemberViewAction.Lo?email=${ email }">계 정</a>
-                <a href="/MemberDeleteAction.Lo">로그 아웃</a>
+                <a href="/MemberLogoutAction.Lo">로그 아웃</a>
               </div>
             </div>
           </c:when>
         </c:choose>
       </div>
-      <div class="navItem-btn"><i class="material-icons" id="navMenu-mobile-btn">view_headline</i></div>
+      <c:choose>
+        <c:when test="${ name eq null}">
+          <div class="navItem-btn"><i class="material-icons" id="navMenu-mobile-btn1">view_headline</i></div>
+        </c:when>
+        <c:when test="${ name ne null}">
+          <div class="navItem-btn"><div id="navMenu-mobile-btn2"><span>${ name }</span><i class="material-icons" >arrow_drop_down</i></div></div>
+        </c:when>
+      </c:choose>
     </div>
   </div>
   <c:choose>
@@ -49,9 +57,9 @@
     <c:when test="${ name ne null}">
       <div class="navMenu-mobile-Wrapper">
         <div class="navMenu-mobile" id="navMenu-mobile2">
-          <div class="navItem-mobile-li"><a href="${pageContext.request.contextPath}/views/">즐겨찾기</a></div>
-          <div class="navItem-mobile-li"><a href="${pageContext.request.contextPath}/views/">계 정</a></div>
-          <div class="navItem-mobile-li"><a href="${pageContext.request.contextPath}/views/">로그 아웃</a></div>
+          <div class="navItem-mobile-li"><a id="myBtn2">즐겨찾기</a></div>
+          <div class="navItem-mobile-li"><a href="/MemberViewAction.Lo?email=${ email }">계 정</a></div>
+          <div class="navItem-mobile-li"><a href="/MemberLogoutAction.Lo">로그 아웃</a></div>
         </div>
       </div>
     </c:when>

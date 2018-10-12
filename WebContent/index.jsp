@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<jsp:forward page="/views/home.jsp" />
+<jsp:forward page="/Home.Lo" />
 
 </body>
 </html>

@@ -202,6 +202,45 @@ form > div:nth-child(2) {
 
 /* input properties end */
 
+/* material ui start */
+
+.cardWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardContents {
+    width: 80%;
+    min-width: 450px;
+    max-width: 600px;
+    font-size: 18px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    /*border-width: 0.01em;*/
+}
+
+.cardContents i {
+    font-size: 20px;
+}
+
+.card-modifyPW {
+    cursor: pointer;
+}
+
+.card-deleteAcc {
+    cursor: pointer;
+}
+
+/* material ui end */
+
 /* for responsive start */
 
 @media screen and (max-width: 768px) {
@@ -249,3 +288,5 @@ form > div:nth-child(2) {
 }
 
 /* for responsive end */
+
+

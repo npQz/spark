@@ -15,7 +15,7 @@ public class MemberLogoutAction implements Action {
 		
 		session.invalidate();
 		
-//		request.getSession().invalidate();
+		//request.getSession().invalidate();
 		
 		forward.setRedirect(true);
 		forward.setPath("/Home.Lo");

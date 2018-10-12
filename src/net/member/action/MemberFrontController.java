@@ -42,9 +42,13 @@ public class MemberFrontController extends HttpServlet {
 		ActionForward forward = null;
 
 		if (command.equals("/Home.Lo")) {
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("views/home.jsp");
+
+			action = new HomeListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		} else if (command.equals("/Signin.Lo")) {
 			forward = new ActionForward();
@@ -55,26 +59,24 @@ public class MemberFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/views/signUp.jsp");
-			
+
 		} else if (command.equals("/SignModify.Lo")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/views/signUp.jsp");
-		
+
 		} else if (command.equals("/MemberView.Lo")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/views/account.jsp");
-	
-		
-		
-		}else if(command.equals("/MemberViewAction.Lo")){
-		   action = new MemberViewAction();
-		   try{
-			   forward=action.execute(request, response);
-		   }catch(Exception e){
-			   e.printStackTrace();
-		   }
+
+		} else if (command.equals("/MemberViewAction.Lo")) {
+			action = new MemberViewAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		} else if (command.equals("/MemberLoginAction.Lo")) {
 
@@ -103,7 +105,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 		} else if (command.equals("/MemberModifyAction.Lo")) {
 
 			action = new MemberModifyAction();
@@ -111,7 +113,7 @@ public class MemberFrontController extends HttpServlet {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}	
+			}
 
 		} else if (command.equals("/MemberDeleteAction.Lo")) {
 
@@ -123,24 +125,23 @@ public class MemberFrontController extends HttpServlet {
 			}
 
 		}
-		/* ajax */
-		/* idChk */
+		/* ajax test */
 		else if (command.equals("/IdChk.Lo")) {
-			
+
 			String email = request.getParameter("email");
-			
+
 			PrintWriter out = response.getWriter();
-			
+
 			MemberDAO dao = new MemberDAO();
-			
+
 			int cnt = dao.IdChk(email);
-			
+
 			if (cnt > 0) {
 				out.print("fail");
 			} else {
 				out.print("success");
 			}
-			
+
 		} else {
 			System.out.println("data flow fail");
 
