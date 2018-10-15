@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import net.bookmark.db.BookmarkDAO;
 import net.bookmark.db.BookmarkDTO;
+import net.park.db.BoardDAO;
 import net.park.db.BoardDTO;
 
 public class BookmarkAddAction implements Action {
@@ -20,7 +21,7 @@ public class BookmarkAddAction implements Action {
     request.setCharacterEncoding("utf-8");
     HttpSession session = request.getSession();
 
-    BoardDAO_backup bodao = new BoardDAO_backup();
+    BoardDAO bodao = new BoardDAO();
     BoardDTO bodto = new BoardDTO();
 
     BookmarkDAO bmkdao = new BookmarkDAO();
