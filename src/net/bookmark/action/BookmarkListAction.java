@@ -22,14 +22,10 @@ public class BookmarkListAction implements Action {
 		BookmarkDAO dao = new BookmarkDAO();
 		
 		List<BookmarkDTO> bmkList = null;
-		
-		
-		
+
 		String email=(String)session.getAttribute("email");
-		
-		
+
 		bmkList = dao.getBmkList(email);
-		
 		
 		//int listcount = dao.getListCount();
 		request.setAttribute("bmkList", bmkList);

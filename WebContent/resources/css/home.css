@@ -103,6 +103,32 @@ input[type=text]::placeholder {
   cursor: pointer;
 }
 
+/* for responsive start */
+
+@media screen and (max-width: 768px) {
+
+  .contentItem-title {
+    display: block;
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .contentItem-info {
+    display: block;
+    font-size: 15px;
+    color: #fff;
+    margin-top: 50px;
+  }
+
+  #map {
+    width: 100%;
+  }
+
+}
+
+/* for responsive end */
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -166,7 +192,7 @@ input[type=text]::placeholder {
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #FFC400;
   text-decoration: none;
   cursor: pointer;
 }
@@ -184,28 +210,6 @@ input[type=text]::placeholder {
   color: white;
 }
 
-/* Modal end */
-
-/* for responsive start */
-
-@media screen and (max-width: 768px) {
-
-  .contentItem-title {
-    display: block;
-    font-size: 30px;
-    font-weight: 600;
-    color: #fff;
-  }
-
-  .contentItem-info {
-    display: block;
-    font-size: 15px;
-    color: #fff;
-    margin-top: 50px;
-  }
-
-}
-
 /* modal custom */
 button {
   background: #fff;
@@ -214,9 +218,6 @@ button {
 
 button .material-icons {
   font-size: 30px;
-}
-
-button .material-icons:hover {
   cursor: pointer;
 }
 
@@ -268,8 +269,7 @@ button .material-icons:hover {
 .modal-body-right {
   margin-right: 20px;
 }
-
-/* for responsive end */
+/* Modal end */
 
 /* for autocomplete start */
 

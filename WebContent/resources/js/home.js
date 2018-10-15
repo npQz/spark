@@ -44,6 +44,6 @@ function chkSearching(searchBtn, searchBar, valCmt) {
 
 /* go to detail page */
 function goContentPage(name) {
-  window.location.href = '/BoardSearchAction?PARKING_NAME' + name;
+  window.location.href = '/BoardSearchAction.bo?PARKING_NAME=' + name;
 }
 

@@ -51,8 +51,6 @@
               </div>
             </div>
 
-            <%--<input type="button" value="중복체크" id="idChk" onclick="idChk()">--%>
-
             <form action="/MemberJoinAction.Lo" method="post" name="signUpForm">
               <div class="input-email">
                 <div><label for="email">이메일</label><span class="chkValCmt">(영어 또는 숫자로 이루어진 이메일)</span></div>

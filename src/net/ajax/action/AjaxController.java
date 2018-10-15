@@ -135,7 +135,6 @@ public class AjaxController extends HttpServlet {
     } /* bmk List  */
     else if (command.equals("/DeleteBmk.aj")) {
 
-      HttpSession session = request.getSession();
       PrintWriter out = response.getWriter();
 
       String email = request.getParameter("email");
@@ -146,6 +145,26 @@ public class AjaxController extends HttpServlet {
       Boolean result = null;
 
       result = dao.bmkDelete(email, bmkName);
+
+      if(result != null) {
+        out.print("success");
+      } else {
+        out.print("fail");
+      }
+
+    } /* bmk Add  */
+    else if (command.equals("/addBmk.aj")) {
+
+      PrintWriter out = response.getWriter();
+
+      String email = request.getParameter("email");
+      String bmkName = request.getParameter("bmkName");
+
+      AjaxDAO dao = new AjaxDAO();
+
+      Boolean result = null;
+
+      result = dao.bmkAdd(email, bmkName);
 
       if(result != null) {
         out.print("success");

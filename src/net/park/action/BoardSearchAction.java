@@ -1,10 +1,14 @@
 package net.park.action;
 
+import net.bookmark.db.BookmarkDAO;
+import net.bookmark.db.BookmarkDTO;
 import net.park.db.BoardDAO;
 import net.park.db.BoardDTO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 public class BoardSearchAction implements Action {
@@ -13,7 +17,9 @@ public class BoardSearchAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		request.setCharacterEncoding("utf-8");
-		String name = request.getParameter("BOARD_NAME");
+		HttpSession session = request.getSession();
+
+		String name = request.getParameter("PARKING_NAME");
 		
 		BoardDAO boarddao = new BoardDAO();
 		BoardDTO boarddata = new BoardDTO();
@@ -29,12 +35,13 @@ public class BoardSearchAction implements Action {
 			System.out.println("상세보기 실패");
 			return null;
 		}
+
+
 		System.out.println("상세보기 성공");
 		
 		request.setAttribute("boarddata", boarddata);
 		
-		request.setAttribute("name", boarddata.getParking_name());//주차장명
-		
+		request.setAttribute("parking_name", boarddata.getParking_name());//주차장명
 		request.setAttribute("addr", boarddata.getAddr());//위치
 		
 		request.setAttribute("type", boarddata.getParking_type_nm());//종류
@@ -61,9 +68,18 @@ public class BoardSearchAction implements Action {
 		request.setAttribute("addrate", boarddata.getAdd_rates());//추가요금
 		request.setAttribute("drate", boarddata.getDay_maximum());//요금1일하루최대요금
 		request.setAttribute("mrate", boarddata.getFulltime_monthly());//요금 1달
-		
-		
-		
+
+		/* bmk list */
+
+		BookmarkDAO dao = new BookmarkDAO();
+		List<BookmarkDTO> bmkList = null;
+
+		String email= (String)session.getAttribute("email");
+
+		bmkList = dao.getBmkList(email);
+
+		request.setAttribute("bmkList", bmkList);
+
 		forward = new ActionForward();
 		forward.setPath("./views/detail.jsp");
 		forward.setRedirect(false);

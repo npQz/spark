@@ -15,6 +15,7 @@ public class HomeListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
+
 		HttpSession session = request.getSession();
 		BookmarkDAO dao = new BookmarkDAO();
 		List<BookmarkDTO> bmkList = null;

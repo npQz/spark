@@ -48,7 +48,6 @@ public class BoardFrontController extends HttpServlet {
 		
 		//디비 연동 페이지 보넸을때
 		}else if(command.equals("/BoardSearchAction.bo")){
-			System.out.println("ddd");
 			action = new BoardSearchAction();
 			try {
 				forward = action.execute(request, response);

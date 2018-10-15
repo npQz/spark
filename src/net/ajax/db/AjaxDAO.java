@@ -242,6 +242,37 @@ public class AjaxDAO {
 
     return false;
   }
+
+  public boolean bmkAdd(String email, String bmk_name) {
+    String sql = "DELETE FROM BOOKMARK WHERE BOOKMARK_EMAIL = ? and BOOKMARK_NAME = ?";
+
+    int result = 0;
+
+    try {
+      con = ds.getConnection();
+      pstmt = con.prepareStatement(sql);
+      pstmt.setString(1, email);
+      pstmt.setString(2, bmk_name);
+
+      result = pstmt.executeUpdate();
+
+      if (result != 0) {
+
+        return true;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+
+    } finally {
+      try {
+        if (pstmt != null) pstmt.close();
+        if (con != null) con.close();
+      } catch (Exception ex) {
+      }
+    }
+
+    return false;
+  }
   
   /* AJAX end */
 }

@@ -18,243 +18,226 @@ import net.park.db.BoardDTO;
 
 public class BookmarkDAO {
 
-	DataSource ds;
-	Connection con;
-	PreparedStatement pstmt;
-	ResultSet rs;
+  DataSource ds;
+  Connection con;
+  PreparedStatement pstmt;
+  ResultSet rs;
 
-	public BookmarkDAO() {
+  public BookmarkDAO() {
 
-		try {
-			Context init = new InitialContext();
-			ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+    try {
+      Context init = new InitialContext();
+      ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 
-		} catch (NamingException e) {
-			System.out.println("DB 연결 실패");
-			e.printStackTrace();
-		}
+    } catch (NamingException e) {
+      System.out.println("DB 연결 실패");
+      e.printStackTrace();
+    }
 
-	}
+  }
 
-	public boolean bmkAdd(/* String parking_code */ String email, String name, String addr, String tel) {
+  public boolean bmkAdd(String email, String name, String addr, String tel) {
 
-		/*
-		 * String sql =
-		 * "SELECT PARKING_NAME, ADDR, TEL FROM SPARK WHERE PARKING_CODE= ?"; int result
-		 * = 0;
-		 * 
-		 * try { con = ds.getConnection(); pstmt = con.prepareStatement(sql);
-		 * pstmt.setString(1, parking_code); rs = pstmt.executeQuery();
-		 * 
-		 * 
-		 * sql = "INSERT INTO BOOKMARK VALUES(?,?,?,?)"; con = ds.getConnection(); pstmt
-		 * = con.prepareStatement(sql); pstmt.setString(1, email); pstmt.setString(2,
-		 * name); pstmt.setString(3, addr); pstmt.setString(4, tel);
-		 * pstmt.executeUpdate();
-		 */
+    String sql = "INSERT INTO BOOKMARK VALUES (?, ?, ?, ?) ";
 
-		String sql = "INSERT INTO BOOKMARK VALUES(?,?,?,?)";
+    int result = 0;
 
-		try {
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, email);
-			pstmt.setString(2, name);
-			pstmt.setString(3, addr);
-			pstmt.setString(4, tel);
-			pstmt.executeUpdate();
+    try {
 
-			/*
-			 * result = pstmt.executeUpdate();
-			 * 
-			 * if(result == 0) return false;
-			 * 
-			 * return true;
-			 */
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
+      con = ds.getConnection();
+      pstmt = con.prepareStatement(sql);
+      pstmt.setString(1, email);
+      pstmt.setString(2, name);
+      pstmt.setString(3, addr);
+      pstmt.setString(4, tel);
+      pstmt.executeUpdate();
 
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (con != null)
-					con.close();
-			} catch (Exception ex) {
-			}
-		}
-		return false;
-	}
+      return true;
+      
+    } catch (SQLException e) {
+      e.printStackTrace();
 
-	public boolean getaddlimit(String email) {
-		String sql = "SELECT * FROM BOOKMARK WHERE BOOKMARK_EMAIL = ?";
-		List<BookmarkDTO> limit = new ArrayList<BookmarkDTO>();
+    } finally {
+      try {
+        if (rs != null)
+          rs.close();
+        if (pstmt != null)
+          pstmt.close();
+        if (con != null)
+          con.close();
+      } catch (Exception ex) {
+      }
+    }
+    return false;
+  }
 
-		try {
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, email);
+  public boolean getaddlimit(String email) {
+    String sql = "SELECT * FROM BOOKMARK WHERE BOOKMARK_EMAIL = ?";
+    List<BookmarkDTO> limit = new ArrayList<BookmarkDTO>();
 
-			rs = pstmt.executeQuery();
+    try {
+      con = ds.getConnection();
+      pstmt = con.prepareStatement(sql);
+      pstmt.setString(1, email);
 
-			while (rs.next()) {
-				BookmarkDTO dto = new BookmarkDTO();
+      rs = pstmt.executeQuery();
 
-				dto.setBOOKMARK_NAME(rs.getString("BOOKMARK_NAME"));
-				dto.setBOOKMARK_ADDR(rs.getString("BOOKMARK_ADDR"));
-				dto.setBOOKMARK_TEL(rs.getString("BOOKMARK_TEL"));
+      while (rs.next()) {
+        BookmarkDTO dto = new BookmarkDTO();
 
-				limit.add(dto);
-			}
+        dto.setBOOKMARK_NAME(rs.getString("BOOKMARK_NAME"));
+        dto.setBOOKMARK_ADDR(rs.getString("BOOKMARK_ADDR"));
+        dto.setBOOKMARK_TEL(rs.getString("BOOKMARK_TEL"));
 
-			System.out.println(limit.size());
+        limit.add(dto);
+      }
 
-			if (limit.size() < 5) {
-				return true;
-			} else {
-				return false;
-			}
+      System.out.println(limit.size());
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+      if (limit.size() < 5) {
+        return false;
+      } else {
+        return true;
+      }
 
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (con != null)
-					con.close();
-			} catch (Exception ex) {
-			}
-		}
-		return false;
+    } catch (SQLException e) {
+      e.printStackTrace();
 
-	}
+    } finally {
+      try {
+        if (rs != null)
+          rs.close();
+        if (pstmt != null)
+          pstmt.close();
+        if (con != null)
+          con.close();
+      } catch (Exception ex) {
+      }
+    }
+    return false;
 
-	/* BMK start */
+  }
 
-	public List<BookmarkDTO> getBmkList(String email) {
-		String sql = "SELECT * FROM BOOKMARK WHERE BOOKMARK_EMAIL = ?";
-		List<BookmarkDTO> bmklist = new ArrayList<BookmarkDTO>();
+  /* BMK start */
 
-		try {
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, email);
+  public List<BookmarkDTO> getBmkList(String email) {
+    String sql = "SELECT * FROM BOOKMARK WHERE BOOKMARK_EMAIL = ?";
+    List<BookmarkDTO> bmklist = new ArrayList<BookmarkDTO>();
 
-			rs = pstmt.executeQuery();
+    try {
+      con = ds.getConnection();
+      pstmt = con.prepareStatement(sql);
+      pstmt.setString(1, email);
 
-			while (rs.next()) {
-				BookmarkDTO dto = new BookmarkDTO();
+      rs = pstmt.executeQuery();
 
-				dto.setBOOKMARK_NAME(rs.getString("BOOKMARK_NAME"));
-				dto.setBOOKMARK_ADDR(rs.getString("BOOKMARK_ADDR"));
-				dto.setBOOKMARK_TEL(rs.getString("BOOKMARK_TEL"));
+      while (rs.next()) {
+        BookmarkDTO dto = new BookmarkDTO();
 
-				bmklist.add(dto);
-			}
+        dto.setBOOKMARK_NAME(rs.getString("BOOKMARK_NAME"));
+        dto.setBOOKMARK_ADDR(rs.getString("BOOKMARK_ADDR"));
+        dto.setBOOKMARK_TEL(rs.getString("BOOKMARK_TEL"));
 
-			return bmklist;
+        bmklist.add(dto);
+      }
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+      return bmklist;
 
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (con != null)
-					con.close();
-			} catch (Exception ex) {
-			}
-		}
-		return null;
+    } catch (SQLException e) {
+      e.printStackTrace();
 
-	}
+    } finally {
+      try {
+        if (rs != null)
+          rs.close();
+        if (pstmt != null)
+          pstmt.close();
+        if (con != null)
+          con.close();
+      } catch (Exception ex) {
+      }
+    }
+    return null;
 
-	public int getlistchk(String email, String name) { // 중복체크
-		String sql = "SELECT BOOKMARK_NAME FROM BOOKMARK WHERE BOOKMARK_EMAIL=?";
-		int result = -1;
+  }
 
-		try {
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
+  public int getlistchk(String email, String name) { // 중복체크
+    String sql = "SELECT BOOKMARK_NAME FROM BOOKMARK WHERE BOOKMARK_EMAIL=?";
+    int result = -1;
 
-			if (rs.next()) {
-				System.out.println(rs.getString("BOOKMARK_NAME"));
-				System.out.println(name);
+    try {
+      con = ds.getConnection();
+      pstmt = con.prepareStatement(sql);
+      pstmt.setString(1, email);
+      rs = pstmt.executeQuery();
 
-				if ((rs.getString("BOOKMARK_NAME")).equals(name)) {
-					System.out.println("일치");
-					result = 0; // 일치
-					return result;
-				} else {
-					result = 1;// 불일치.
-					return result;
-				}
+      
+      while (rs.next()) {
+        System.out.println(rs.getString("BOOKMARK_NAME"));
+        System.out.println(name);
 
-			}
-		} catch (Exception e) {
-		} finally {
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException e) {
-				}
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-				}
-			if (con != null)
-				try {
-					con.close();
-				} catch (SQLException e) {
-				}
-		}
+        if ((rs.getString("BOOKMARK_NAME")).equals(name)) {
+          System.out.println("일치");
+          result = 0; // 일치
+          return result;
+        }
+      }
+  
+      result = 1;// 불일치.
+      return result;
 
-		return 0;
-	}
+    } catch (Exception e) {
+    } finally {
+      if (rs != null)
+        try {
+          rs.close();
+        } catch (SQLException e) {
+        }
+      if (pstmt != null)
+        try {
+          pstmt.close();
+        } catch (SQLException e) {
+        }
+      if (con != null)
+        try {
+          con.close();
+        } catch (SQLException e) {
+        }
+    }
 
-	public boolean bmkDelete(String email, String bmk_name) {
-		String sql = "DELETE FROM BOOKMARK WHERE BOOKMARK_EMAIL = ? and BOOKMARK_NAME = ?";
+    return 0;
+  }
 
-		int result = 0;
+  public boolean bmkDelete(String email, String bmk_name) {
+    String sql = "DELETE FROM BOOKMARK WHERE BOOKMARK_EMAIL = ? and BOOKMARK_NAME = ?";
 
-		try {
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, email);
-			pstmt.setString(2, bmk_name);
+    int result = 0;
 
-			result = pstmt.executeUpdate();
+    try {
+      con = ds.getConnection();
+      pstmt = con.prepareStatement(sql);
+      pstmt.setString(1, email);
+      pstmt.setString(2, bmk_name);
 
-			if (result != 0) {
+      result = pstmt.executeUpdate();
 
-				return true;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+      if (result != 0) {
 
-		} finally {
-			try {
-				if (pstmt != null)
-					pstmt.close();
-				if (con != null)
-					con.close();
-			} catch (Exception ex) {
-			}
-		}
+        return true;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
 
-		return false;
-	}
+    } finally {
+      try {
+        if (pstmt != null)
+          pstmt.close();
+        if (con != null)
+          con.close();
+      } catch (Exception ex) {
+      }
+    }
+
+    return false;
+  }
 }
