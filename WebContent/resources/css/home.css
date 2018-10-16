@@ -121,7 +121,8 @@ input[type=text]::placeholder {
     margin-top: 50px;
   }
 
-  #map {
+  body #map {
+    left: 0;
     width: 100%;
   }
 
@@ -146,6 +147,20 @@ input[type=text]::placeholder {
 
 /* Modal Content */
 .modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 400px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+.modal-content-custom {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -197,13 +212,40 @@ input[type=text]::placeholder {
   cursor: pointer;
 }
 
+.close-custom {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-custom:hover,
+.close-custom:focus {
+  color: #FFC400;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .modal-header {
   padding: 2px 16px;
   background-color: #5cb85c;
   color: white;
 }
 
+.modal-header-custom {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
 .modal-footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-footer-custom {
   text-align: center;
   padding: 10px;
   background-color: #5cb85c;
@@ -226,6 +268,14 @@ button .material-icons {
 }
 
 .modal-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 20px 10px;
+}
+
+.modal-body-custom {
   display: flex;
   justify-content: space-between;
   align-items: center;

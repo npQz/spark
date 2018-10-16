@@ -81,6 +81,14 @@
     padding-right: 0px;
 }
 
+.col-sm-12 .text-muted-parkingtype {
+    font-size: 13px;
+}
+
+.col-sm-12 .my-0-time {
+    font-size: 13px;
+}
+
 @media screen and (max-width: 1042px) {
 
     .rightSide .infoWrapper {
@@ -88,13 +96,14 @@
         top: 108px;
         width: 100%;
     }
+
 }
 
 @media screen and (max-width: 884px) {
 
     .rightSide .infoWrapper {
         position: relative;
-        top: 102px;
+        top: 94px;
         width: 100%;
     }
 }
@@ -143,15 +152,6 @@
         width: 100%;
     }
 
-}
-
-/* CSS Custom */
-#myBtn1 {
-    color: black;
-    font-size: 15px;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
 }
 
 

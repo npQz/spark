@@ -217,8 +217,6 @@
               _cnt.style.display = 'none';
 
               if (_last === false) {
-                /*if(_first) { return };*/
-                alert('dd')
                 _cnt_near.style.border = 'none';
               }
 

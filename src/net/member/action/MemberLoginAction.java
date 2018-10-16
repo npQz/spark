@@ -49,8 +49,7 @@ public class MemberLoginAction implements Action {
 			out.println("</script>");
 			out.close();
 			return null;
-
-		
+			
 		}
 		String name = dao.memberName(dto.getEMAIL());
 		

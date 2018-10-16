@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set value="${ boarddata }" var="data"/>
-<c:set value="${ bmkList }" var="list"/>
 
 <html>
 <head>
@@ -14,15 +13,14 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/normalize.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/format/header.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/format/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detail.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detail_ppt.css">
+ 
   
   <style>
     
@@ -57,7 +55,7 @@
 
             // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
             var mapTypeControl = new daum.maps.MapTypeControl();
-
+            
             // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
             // daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
             map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
@@ -106,7 +104,7 @@
                     <h6 class="my-0">종류</h6>
                   </div>
                   <span
-                      class="text-muted <!-- freeOrDie -->">${data.parking_type_nm} / ${data.operation_rule_nm} / ${data.night_free_open_nm}</span>
+                      class="text-muted-parkingtype">${data.parking_type_nm} / ${data.operation_rule_nm} / ${data.night_free_open_nm}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
@@ -129,7 +127,7 @@
                 
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
-                    <h6 class="my-0">주차 가능시간</h6>
+                    <h6 class="my-0-time">주차 가능시간</h6>
                     <small class="text-muted">평일</small>
                   </div>
                   <span class="text-muted">평일 : ${data.weekday_begin_time} ~ ${data.weekday_end_time}</span>
@@ -137,7 +135,7 @@
                 
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
-                    <h6 class="my-0">주차 가능시간</h6>
+                    <h6 class="my-0-time">주차 가능시간</h6>
                     <small class="text-muted">주말 및 공휴일</small>
                   </div>
                   <span
@@ -183,149 +181,19 @@
         </div>
       </div>
     </div>
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-    
-      <!-- Modal content -->
-      <div class="modal-content-custom">
-        <div class="modal-header-custom">
-          <span class="close-custom">&times;</span>
-          <div class="modal-header-title">즐겨찾기</div>
-        </div>
-        <c:forEach items="${ list }" var="list" varStatus="status">
-        <c:set value="${ list.BOOKMARK_NAME }" var="bmkName"/>
-        <c:set value="${ status.count }" var="cnt"/>
-        <c:set value="${ status.first }" var="first"/>
-        <c:set value="${ status.last }" var="last"/>
-        <div class="modal-body-Wrapper">
-          <c:choose>
-          <c:when test="${ last ne true }">
-          <div class="modal-body-custom" id="${ cnt }">
-            </c:when>
-            <c:when test="${ last eq true }">
-            <div class="modal-body modal-body-borderless" id="${ cnt }">
-              </c:when>
-              </c:choose>
-              <div class="modal-body-left" onclick="goContentPage('${ list.BOOKMARK_NAME }')">
-                <div class="modal-body-title">${ list.BOOKMARK_NAME }</div>
-                <div class="modal-body-addr">${ list.BOOKMARK_ADDR }</div>
-                <div class="modal-body-tel">${ list.BOOKMARK_TEL }</div>
-              </div>
-              <div class="modal-body-right">
-                <div class="modal-body-icon">
-                  <button onclick="deleteBmk('${ bmkName }', '${ cnt }', '${ first }', '${ last }')"><i class="material-icons">bookmark</i></button>
-                </div>
-              </div>
-            </div>
-          </div>
-          </c:forEach>
-          <div class="modal-footer-custom">
-            <div>Presented by BOH</div>
-          </div>
-        </div>
-      </div>
   </div>
 </main>
 <jsp:include page="format/footer.jsp"/>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/bs/jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="resources/bs/js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
-
-<script>
-
-  clickMobileBtn('#navMenu-mobile-btn1', '.navMenu-mobile');
-
-  clickMobileBtn('#navMenu-mobile-btn2', '.navMenu-mobile');
-
-  /* Modal start */
-
-  <c:choose>
-  <c:when test="${ name ne null }">
-  // Get the modal
-  var modal = document.getElementById('myModal');
-
-  // Get the button that opens the modal
-  var btn1 = document.getElementById("myBtn1");
-  var btn2 = document.getElementById("myBtn2");
-
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close-custom")[0];
-
-  // When the user clicks the button, open the modal
-  btn1.onclick = function () {
-    modal.style.display = "block";
-  }
-
-  btn2.onclick = function () {
-    modal.style.display = "block";
-  }
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function () {
-    modal.style.display = "none";
-  }
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-  </c:when>
-  </c:choose>
-
-  /* Modal end */
-
-  /* bmk delete action */
-  function deleteBmk(bmkName, cnt, first, last) {
-    var _bmkName = bmkName;
-    var _cnt = document.getElementById(cnt);
-    var _first = first;
-    var _last = last;
-
-    var _cnt_near_num = parseInt(cnt) - 1;
-    var _cnt_near = document.getElementById(_cnt_near_num);
-
-    var r = confirm("이 주차장을 즐겨찾기에서 삭제하시겠습니까?");
-
-    if (r == true) {
-      var _email = '${ email }';
-
-      $.ajax({
-        url: "/DeleteBmk.aj",
-        type: 'GET',
-        data: {
-          email: _email,
-          bmkName: _bmkName
-        },
-        success: function (data) {
-          if (data === 'success') {
-            alert('삭제 성공');
-            _cnt.style.display = 'none';
-
-            if (_last === false) {
-              _cnt_near.style.border = 'none';
-            }
-
-          } else if (data === 'fail') {
-
-          }
-        }
-      })
-    } else {
-
-    }
-  }
-  
-  $(window).load(function() {
-    var _first_modal = document.getElementById('1');
-    
-    _first_modal.style.margin = '1px';
-  })
-  
-</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="./resources/js/home.js"></script>
 
 </body>
 </html>

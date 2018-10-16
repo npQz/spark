@@ -42,11 +42,13 @@ public class BookmarkAddAction implements Action {
       PrintWriter out = response.getWriter();
       out.println("<script>");
       out.println("alert('이미 즐겨찾기에 주차한 주차장입니다.')");
-      out.println("javascript:history.go(-1)");
+//      out.println("javascript:history.go(-1)");
+      out.println("location.href='/BoardSearch.bo?PARKING_NAME=" + name + "'");
       out.println("</script>");
       out.close();
-
+  
       return null;
+      
     }
 
     boolean result2;
@@ -58,10 +60,11 @@ public class BookmarkAddAction implements Action {
       PrintWriter out = response.getWriter();
       out.println("<script>");
       out.println("alert('즐겨찾기 개수가 초과되었습니다. (5개까지 가능)')");
-      out.println("javascript:history.go(-1)");
+//      out.println("javascript:history.go(-1)");
+      out.println("location.href='/BoardSearch.bo?PARKING_NAME=" + name + "'");
       out.println("</script>");
       out.close();
-
+      
       return null;
 
     }
@@ -75,15 +78,6 @@ public class BookmarkAddAction implements Action {
     if(!result3) {
       System.out.println("즐겨찾기 실패");
     }
-
-    response.setContentType("text/html; charset=utf-8");
-    PrintWriter out = response.getWriter();
-
-    /*out.println("<script>");
-    out.println("alert('즐겨찾기에 추가되었습니다.')");
-    out.println("location.href='/BoardSearch.bo?PARKING_NAME='" + name + "");
-    out.println("</script>");
-    out.close();*/
 
     forward = new ActionForward();
     forward.setRedirect(false);

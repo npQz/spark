@@ -48,7 +48,6 @@ create table SPark(
 	LNG		 	varchar2(50)
 );
 
-
 select *from member;
 
 select *from SPark;
@@ -66,7 +65,9 @@ select * from bookmark;
 
 commit;
 
-delete from BOOKMARK where BOOKMARK_NAME=null;
+delete from BOOKMARK where BOOKMARK_EMAIL='asdf@asdf.com';
+
+drop table MEMBER;
 
 drop table BOOKMARK;
 
